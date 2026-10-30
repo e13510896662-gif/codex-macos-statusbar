@@ -1,0 +1,34 @@
+name: 更新需求
+description: 提交使用场景、功能建议和期望效果
+title: "[需求] "
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: "感谢反馈。请先搜索已有需求，相同需求可用 👍 表态。不要提交认证文件、Token 或原始聊天日志。"
+  - type: textarea
+    id: scenario
+    attributes:
+      label: 使用场景与当前问题
+      description: 在什么情况下遇到了什么不方便？
+    validations:
+      required: true
+  - type: textarea
+    id: expectation
+    attributes:
+      label: 期望的更新
+      description: 希望工具如何表现？可以补充草图或不含敏感信息的示例。
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 使用环境
+      placeholder: "M 系列 / Intel，macOS 版本，Codex 版本，工具版本"
+  - type: dropdown
+    id: help-test
+    attributes:
+      label: 是否愿意协助验证？
+      options:
+        - 暂不参与验证
+        - 愿意尝试测试版本并反馈

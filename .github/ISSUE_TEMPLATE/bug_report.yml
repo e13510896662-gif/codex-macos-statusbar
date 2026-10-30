@@ -1,0 +1,41 @@
+name: 问题反馈
+description: 报告显示错误、连接异常或应用问题
+title: "[问题] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "请勿上传 auth.json、API Key、Token、完整会话日志或敏感账户信息。截图请先检查内容。"
+  - type: input
+    id: version
+    attributes:
+      label: 工具版本
+      placeholder: v0.0.1
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: macOS、Mac 架构和 Codex 版本
+      placeholder: "macOS 版本 / arm64 或 Intel / Codex 版本"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      description: 从打开工具到出现问题的具体过程。
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: 实际现象与预期行为
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: 可选的诊断摘要
+      description: "可运行 --diagnose，发布前检查并移除任何敏感信息。不要附原始日志。"
+      render: json

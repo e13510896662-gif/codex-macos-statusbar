@@ -1,0 +1,27 @@
+name: macOS build and tests
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test-and-build:
+    runs-on: macos-15
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - name: Swift version
+        run: swift --version
+      - name: Run tests
+        run: bash test.sh
+      - name: Build app
+        run: bash build.sh
+      - name: Archive app
+        run: ditto -c -k --norsrc --keepParent "dist/Codex Mac 状态栏.app" "dist/codex-macos-statusbar-ci.zip"
+      - uses: actions/upload-artifact@v7.0.2
+        with:
+          name: codex-macos-statusbar-${{ runner.arch }}
+          path: dist/codex-macos-statusbar-ci.zip
+          if-no-files-found: error
